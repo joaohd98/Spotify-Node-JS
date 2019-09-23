@@ -11,8 +11,6 @@ const client_secret = "d204dd5d9cb8492083f4dd712d25caa3";
 
 app.post('/access-token', function(req, res) {
 
-  console.log(req.body);
-
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
@@ -43,9 +41,7 @@ app.post('/access-token', function(req, res) {
 
 
 app.post('/refresh-token', function(req, res) {
-
-  console.log(req.body);
-
+  
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
