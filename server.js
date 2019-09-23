@@ -6,32 +6,12 @@ app.listen(process.env.PORT || 3001);
 
 app.use(express.json());
 
-// Add headers
-app.use(function (req, res, next) {
-
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
-
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // Pass to next layer of middleware
-  next();
-
-});
-
-
 const client_id = "76f87d316726466e999bfb3164fc2114";
 const client_secret = "d204dd5d9cb8492083f4dd712d25caa3";
 
 app.post('/access-token', function(req, res) {
+
+  console.log(req.body);
 
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -63,6 +43,8 @@ app.post('/access-token', function(req, res) {
 
 
 app.post('/refresh-token', function(req, res) {
+
+  console.log(req.body);
 
   let authOptions = {
     url: 'https://accounts.spotify.com/api/token',
